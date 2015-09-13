@@ -1,0 +1,2 @@
+include versioneer.py
+include dataship/_version.py

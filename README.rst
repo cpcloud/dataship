@@ -79,8 +79,7 @@ For example,
           }
       }
 
-To start, the most common usage of this will likely be in the context of
-relational databases in concert with SQLAlchemy since SQLAlchemy provides
-access to all of the relationships that exist in a database. However, one could
-imagine using ``dataship`` to treat a dictionary of pandas DataFrames as a
-simple in memory database.
+The most common usage of this will likely be in the context of relational
+databases in concert with SQLAlchemy. However, one could imagine using
+``dataship`` to treat a dictionary of pandas DataFrames as a simple in memory
+database.

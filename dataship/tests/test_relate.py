@@ -1,8 +1,10 @@
+import os
+
 import pytest
 
 import sqlalchemy as sa
 
-from dataship import relate
+from dataship import relate, to_graph, write_graph
 
 
 @pytest.fixture(scope='module')
@@ -92,3 +94,13 @@ def test_database(engine):
             }
         }
     }
+
+
+def test_to_graph(engine):
+    assert to_graph(relate(engine)).edges()
+
+
+def test_write_agraph(engine, tmpdir):
+    filename = str(tmpdir.join('tmp.dot'))
+    write_graph(to_graph(relate(engine)), filename)
+    assert os.path.exists(filename)

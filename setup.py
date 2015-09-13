@@ -23,7 +23,7 @@ setup(
     long_description=read('README.rst'),
     zip_safe=False,
     entry_points={
-        'console_scripts': ['shipit = dataship.relate:shipit']
+        'console_scripts': ['shipit = dataship.shipit:main']
     },
     classifiers=[
         'Development Status :: 3 - Alpha',

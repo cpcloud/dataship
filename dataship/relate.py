@@ -90,24 +90,3 @@ def write_graph(graph, path):
         f.write(nx.to_agraph(graph).to_string())
 
 
-def shipit():
-    import os
-    import tempfile
-    import subprocess
-    import argparse
-    import webbrowser
-
-    p = argparse.ArgumentParser()
-    p.add_argument('uri', help='SQLAlchemy database uri')
-    args = p.parse_args()
-
-    with tempfile.NamedTemporaryFile() as f:
-        write_graph(to_graph(relate(sa.create_engine(args.uri))), f.name)
-
-        with tempfile.NamedTemporaryFile(delete=False) as g:
-            subprocess.check_call(['dot', f.name, '-T', 'pdf', '-o', g.name])
-            webbrowser.open('file://%s' % os.path.abspath(g.name))
-
-
-if __name__ == '__main__':
-    shipit()

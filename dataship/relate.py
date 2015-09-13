@@ -68,7 +68,8 @@ def to_graph(ships):
             pkeys.append(n)
 
         # purple edges form the primary key
-        graph.add_edge(key, pkeys[0], color='purple')
+        if pkeys:
+            graph.add_edge(key, pkeys[0], color='purple')
         for prev, nxt in zip(pkeys[:-1], pkeys[1:]):
             graph.add_edge(prev, nxt, color='purple')
 

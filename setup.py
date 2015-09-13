@@ -20,8 +20,11 @@ setup(
     keywords='data database',
     packages=find_packages(),
     install_requires=read('requirements.txt').strip().split('\n'),
-    long_description=read('README.md'),
+    long_description=read('README.rst'),
     zip_safe=False,
+    entry_points={
+        'console_scripts': ['ships = dataship.relate.shipit']
+    },
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',

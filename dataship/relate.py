@@ -34,8 +34,8 @@ def relate(metadata):
 
 
 @dispatch(sa.engine.Engine)
-def relate(engine):
-    metadata = sa.MetaData(bind=engine)
+def relate(engine, schema=None):
+    metadata = sa.MetaData(bind=engine, schema=schema)
     metadata.reflect()
     return relate(metadata)
 

@@ -5,7 +5,7 @@ import sqlalchemy as sa
 from dataship import relate
 
 
-@pytest.fixture
+@pytest.fixture(scope='module')
 def engine():
     return sa.create_engine('postgresql://localhost/tpc')
 
@@ -24,9 +24,8 @@ def test_table(engine):
     }
 
 
-def test_database():
-    db = sa.create_engine('postgresql://localhost/tpc')
-    assert relate(db) == {
+def test_database(engine):
+    assert relate(engine) == {
         'customer': {
             'primary': ['id'],
             'foreign': {

@@ -11,6 +11,7 @@ import networkx as nx
 def relate(table):
     result = {
         table.name: {
+            'fields': table.columns.keys(),
             'foreign': {},
             'primary': []
         }
